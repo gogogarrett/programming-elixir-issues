@@ -39,6 +39,7 @@ defmodule Issues.CLI do
   def process({user, project, count}) do
     Issues.GithubIssues.fetch(user, project)
     |> decode_response
+    |> convert_to_list_of_hashdicts
   end
 
   def decode_response({:ok, body}), do: body
